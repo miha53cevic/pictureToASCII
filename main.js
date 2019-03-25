@@ -140,6 +140,24 @@ function init() {
 
     // Input by local Picture
     let userInput = document.getElementById('imageInput').addEventListener('change', function (e) {
+
+        // Potrebno jer javascript inace ne ceka da se slika prenese na img.src
+        img.onload = function () {
+
+            pixels = getPixelArray(img);
+    
+            document.getElementById('asciiArea').textContent = grayScaleGroup(pixels, img.width, img.height, Grouping);
+    
+            // Fit content za text area and make it visible
+            document.getElementById('asciiArea').style.width = (img.width * fontSize / Grouping * 0.75).toString() + 'px';
+            document.getElementById('asciiArea').style.height = (img.height * fontSize / Grouping).toString() + 'px';
+            document.getElementById('asciiArea').style.visibility = 'visible';
+    
+            // Stavi da je preview manji od cijele slike nakon što se pošalje cijela slika
+            img.style.width = '200px';
+            img.style.height = '200px';
+        }
+
         img.src = URL.createObjectURL(e.target.files[0]);
 
         // Clear previous asciiArt if it exists
@@ -152,32 +170,28 @@ function init() {
 
         // Get current options
         options();
-
-        // Downscalaj sliku ako je vise od 1280x1280
-        if (img.width > 1280 || img.height > 1280) {
-            img.style.width = '1280px';
-            img.style.height = '1280px';
-        }
-
-        // Potrebno jer javascript inace ne ceka da se slika prenese na img.src
-        img.onload = function () {
-            pixels = getPixelArray(img);
-
-            document.getElementById('asciiArea').textContent = grayScaleGroup(pixels, img.width, img.height, Grouping);
-
-            // Fit content za text area and make it visible
-            document.getElementById('asciiArea').style.width = (img.width * fontSize / Grouping).toString() + 'px';
-            document.getElementById('asciiArea').style.height = (img.height * fontSize / Grouping).toString() + 'px';
-            document.getElementById('asciiArea').style.visibility = 'visible';
-
-            // Stavi da je preview manji od cijele slike nakon što se pošalje cijela slika
-            img.style.width = '200px';
-            img.style.height = '200px';
-        }
     })
 
     // Input by URL
     let urlInput = document.getElementById('submit').addEventListener('click', function () {
+
+        // Prvo se stavlja handler onda se mjenja slika tako da event nebi prosel
+        // Potrebno jer javascript inace ne ceka da se slika prenese na img.src
+        img.onload = function () {
+            pixels = getPixelArray(img);
+    
+            document.getElementById('asciiArea').textContent = grayScaleGroup(pixels, img.width, img.height, Grouping);
+    
+            // Fit content za text area and make it visible
+            document.getElementById('asciiArea').style.width = (img.width * fontSize / Grouping).toString() + 'px';
+            document.getElementById('asciiArea').style.height = (img.height * fontSize / Grouping).toString() + 'px';
+            document.getElementById('asciiArea').style.visibility = 'visible';
+    
+            // Stavi da je preview manji od cijele slike nakon što se pošalje cijela slika
+            img.style.width = '200px';
+            img.style.height = '200px';
+        }
+    
         img.src = document.getElementById('url').value;
 
         // Clear previous asciiArt if it exists
@@ -190,30 +204,25 @@ function init() {
 
         // Get current options
         options();
-
-        // Downscalaj sliku ako je vise od 1280x1280
-        if (img.width > 1280 || img.height > 1280) {
-            img.style.width = '1280px';
-            img.style.height = '1280px';
-        }
-
-        // Potrebno jer javascript inace ne ceka da se slika prenese na img.src
-        img.onload = function () {
-            pixels = getPixelArray(img);
-            alert("ya yeet")
-
-            document.getElementById('asciiArea').textContent = grayScaleGroup(pixels, img.width, img.height, Grouping);
-
-            // Fit content za text area and make it visible
-            document.getElementById('asciiArea').style.width = (img.width * fontSize / Grouping).toString() + 'px';
-            document.getElementById('asciiArea').style.height = (img.height * fontSize / Grouping).toString() + 'px';
-            document.getElementById('asciiArea').style.visibility = 'visible';
-
-            // Stavi da je preview manji od cijele slike nakon što se pošalje cijela slika
-            img.style.width = '200px';
-            img.style.height = '200px';
-        }
     })
 }
 
-window.onload = init;
+function NavBarSetup () {
+    let fromFile = document.getElementById('pictureInput');
+    let fromURL = document.getElementById('urlInput');
+
+    // Nav bar event handler
+    document.getElementById('fromFile').addEventListener('click', function() {
+        fromFile.style.display = 'block';
+        fromURL.style.display = 'none';
+    })
+    document.getElementById('fromURL').addEventListener('click', function() {
+        fromFile.style.display = 'none';
+        fromURL.style.display = 'block';
+    })
+}
+
+window.onload = function() {
+    NavBarSetup();
+    init();
+};

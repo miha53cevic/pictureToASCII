@@ -12,32 +12,43 @@
 </head>
 
 <body>
-    <div id="previewImage">
-        <img id="userImage">
-    </div>
+    <div id="Pannel">
+        <div id="pannelHeading"> pictureToASCII Converter </div>
 
-    <div id="urlInput">
-        <h3>URL</h3>
-        <input type="url" id="url">
-        <input type="submit" id="submit">
-    </div>
+        <ul id="table">
+            <li id="fromFile">
+                From file
+            </li>
+            <li id="fromURL">
+                From URL
+            </li>
+        </ul>
+        <hr>
+        <div id="urlInput" class="boundingBox">
+            URL
+            <input type="url" id="url">
+            <input type="submit" id="submit">
+        </div>
 
-    <div id="pictureInput">
-        <input type="file" id="imageInput" accept="image/*">
-    </div>
+        <div id="pictureInput" class="boundingBox">
+            <input type="file" id="imageInput" accept="image/*">
+        </div>
 
+        <div id="previewImage">
+            <img id="userImage" crossorigin="anonymous">
+        </div>
+        <br>
+        <div id="options">
+            Grouping:
+            <input type="number" min="1" max="100" value="4" id="grouping">
+            Font size:
+            <input type="number" min="1" max="100" value="8" id="fontsize"> <br><br>
+            <input type="radio" checked="true"> Max: 1280x1280
+        </div>
+    </div>
     <br>
-
     <div id="ascii">
         <textarea id="asciiArea"> </textarea>
-    </div>
-
-    <div id="options">
-        Grouping:
-        <input type="number" min="1" max="100" value="4" id="grouping">
-        Font size:
-        <input type="number" min="1" max="100" value="8" id="fontsize">
-        <input type="radio" checked="true"> Max: 1280x1280
     </div>
 </body>
 
