@@ -136,10 +136,10 @@ function init() {
 
     let pixels = [];
 
-    let img = document.getElementById('userImage');
+    const img = document.getElementById('previewImage');
 
     // Input by local Picture
-    let userInput = document.getElementById('imageInput').addEventListener('change', function (e) {
+    document.getElementById('imageInput').addEventListener('change', function (e) {
 
         // Potrebno jer javascript inace ne ceka da se slika prenese na img.src
         img.onload = function () {
@@ -173,7 +173,7 @@ function init() {
     })
 
     // Input by URL
-    let urlInput = document.getElementById('submit').addEventListener('click', function () {
+    document.getElementById('submit').addEventListener('click', function () {
 
         // Prvo se stavlja handler onda se mjenja slika tako da event nebi prosel
         // Potrebno jer javascript inace ne ceka da se slika prenese na img.src
@@ -207,6 +207,7 @@ function init() {
     })
 }
 
+// Hide the option which hasn't been selected (FromFile or FromURL)
 function NavBarSetup () {
     let fromFile = document.getElementById('pictureInput');
     let fromURL = document.getElementById('urlInput');
@@ -222,7 +223,7 @@ function NavBarSetup () {
     })
 }
 
-window.onload = function() {
+window.onload = () => {
     NavBarSetup();
     init();
 };

@@ -1,55 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>pictureToASCII</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="main.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
     <script src="options.js"></script>
+    <script src="main.js"></script>
+    <title>pictureToASCII Converter</title>
 </head>
 
 <body>
-    <div id="Pannel">
-        <div id="pannelHeading"> pictureToASCII Converter </div>
+    <div class="pannelContainer">
+        <header>pictureToASCII Converter</header>
 
-        <ul id="table">
-            <li id="fromFile">
-                From file
-            </li>
-            <li id="fromURL">
-                From URL
-            </li>
-        </ul>
-        <hr>
-        <div id="urlInput" class="boundingBox">
-            URL
-            <input type="url" id="url">
-            <input type="submit" id="submit">
+        <div class="navBar">
+            <item1 id="fromFile">From file</item1>
+            <item2 id="fromURL">From URL</item2>
         </div>
 
-        <div id="pictureInput" class="boundingBox">
-            <input type="file" id="imageInput" accept="image/*">
-        </div>
+        <upload>
+            <div id="urlInput" style="visibility: none; display: none;" class="boundingBox">
+                URL
+                <input type="url" style="width: 80%;" id="url">
+                <input type="submit" id="submit">
+            </div>
 
-        <div id="previewImage">
-            <img id="userImage" crossorigin="anonymous">
-        </div>
-        <br>
-        <div id="options">
-            Grouping:
-            <input type="number" min="1" max="100" value="4" id="grouping">
-            Font size:
-            <input type="number" min="1" max="100" value="8" id="fontsize"> <br><br>
-            <input type="radio" checked="true"> Max: 1280x1280
+            <div id="pictureInput" class="boundingBox">
+                <input type="file" id="imageInput" accept="image/*">
+            </div>
+        </upload>
+
+        <div class="pannelBody">
+            <options>
+                <br>
+                Grouping:
+                <input type="number" min="1" max="100" value="4" id="grouping">
+                Font size:
+                <input type="number" min="1" max="100" value="8" id="fontsize">
+            </options>
+            <preview>
+                <img id="previewImage" alt="previewImage">
+            </preview>
         </div>
     </div>
-    <br>
+
     <div id="ascii">
         <textarea id="asciiArea"> </textarea>
     </div>
+
 </body>
 
 </html>
