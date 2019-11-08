@@ -5,6 +5,9 @@
 body {
     display: flex;
     flex-direction: column;
+
+    /**/
+    flex-wrap: wrap;
     
     /*Center align column flexbox*/
     align-items: center;
