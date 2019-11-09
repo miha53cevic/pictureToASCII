@@ -5,9 +5,6 @@
 body {
     display: flex;
     flex-direction: column;
-
-    /**/
-    flex-wrap: wrap;
     
     /*Center align column flexbox*/
     align-items: center;
@@ -20,7 +17,7 @@ body {
     flex-direction: column;
     border: solid rgb(102, 204, 255) 1px;
     border-radius: 5px;
-    min-width: 600px;
+    width: 100vw;
     max-width: 600px;
 }
 
