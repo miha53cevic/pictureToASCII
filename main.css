@@ -1,15 +1,11 @@
+/* Mobile first website */
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    
-    /*Center align column flexbox*/
-    align-items: center;
-    justify-content: center;
-    padding-top: 5vh;
+    text-align: center;
 }
 
 .pannelContainer {
@@ -17,27 +13,12 @@ body {
     flex-direction: column;
     border: solid rgb(102, 204, 255) 1px;
     border-radius: 5px;
-    width: 100vw;
-    max-width: 600px;
 }
 
 .pannelContainer > header {
-    min-height: 4vh;
     background-color: rgb(102, 204, 255);
     color: white;
-    text-align: left;
-    padding: 10px;
-}
-
-.pannelContainer > upload {
-    padding: 10px;
-}
-
-.boundingBox {
-    padding: 5px;
-    border: solid gray 1px;
-    border-radius: 5px;
-    width: 100%;
+    padding: 0.5em;
 }
 
 .navBar {
@@ -47,11 +28,16 @@ body {
 }
 
 .navBar > item1 {
-    min-height: 4vh;
-    width: 15%;
+    flex: 1;
     text-align: center;
-    padding: 8px 5px 5px 5px;
+    padding: 0.5em;
     border-right: solid gray 1px;
+}
+
+.navBar > item2 {
+    flex: 1;
+    text-align: center;
+    padding: 0.5em;
 }
 
 .navBar > item1:hover {
@@ -60,42 +46,40 @@ body {
     cursor: pointer;
 }
 
-.navBar > item2 {
-    width: 15%;
-    text-align: center;
-    padding: 8px 5px 5px 5px;
-    border-right: solid gray 1px;
-}
-
 .navBar > item2:hover {
     background-color: gray;
     color: white;
     cursor: pointer;
 }
 
+.pannelContainer > upload {
+    flex: 1;
+    padding: 0.5em;
+}
+
+.boundingBox {
+    padding: 0.25em;
+    border: solid gray 1px;
+    border-radius: 5px;
+}
+
 .pannelBody {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .pannelBody > options {
     flex: 1;
-    min-height: 25vh;
     font-weight: bold;
-    text-align: left;
-    padding-left: 10px;
+    padding: 0.5em;
 }
 
 .pannelBody > preview {
-    display: flex;
     flex: 1;
-    justify-content: flex-end;
-    padding: 10px 10px 10px 0;
+    padding: 0.5em 0.5em 0.5em 0;
 }
 
 .pannelBody > preview > img {
-    width: 200px;
-    height: 200px;
     border: 1px solid black;
 }
 
@@ -105,4 +89,63 @@ body {
     font-size: 8px;
     font-family: 'Courier New', Courier, monospace;
     visibility: hidden;
+}
+
+/* Only use these in a screen that is 640px in width or more */
+/* Desktop Layout */
+@media screen and (min-width: 640px) {
+    /* Koristi i dalje vrijednosti od iznad ali ih tu ili promjeni ili im doda */
+    body {
+        display: flex;
+        flex-direction: column;
+        
+        /*Center align column flexbox*/
+        align-items: center;
+        justify-content: center;
+        padding-top: 5vh;
+    }
+
+    .pannelContainer {
+        width: 100vw;
+        max-width: 600px;
+    }
+
+    .pannelContainer > header {
+        min-height: 4vh;
+        text-align: left;
+    }
+
+    
+    .navBar > item1 {
+        min-height: 4vh;
+        flex: 0 0 15%;
+    }
+
+    .navBar > item2 {
+        min-height: 4vh;
+        flex: 0 0 15%;
+        border-right: solid gray 1px;
+    }
+    
+    .pannelBody {
+        flex-direction: row;
+    }
+
+    .pannelBody > options {
+        min-height: 25vh;
+        text-align: left;
+        padding-left: 1em;
+        flex: 2;
+    }
+
+    .pannelBody > preview {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .pannelBody > preview > img {
+        width: 200px;
+        height: 200px;
+    }
 }
