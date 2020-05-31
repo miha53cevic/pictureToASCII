@@ -1,0 +1,154 @@
+/* Mobile first website */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+}
+
+.pannelContainer {
+    display: flex;
+    flex-direction: column;
+    border: solid rgb(102, 204, 255) 1px;
+    border-radius: 5px;
+}
+
+.pannelContainer > header {
+    background-color: rgb(102, 204, 255);
+    color: white;
+    padding: 0.5em;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid gray 1px;
+}
+
+.navBar > item1 {
+    flex: 1;
+    text-align: center;
+    padding: 0.5em;
+    border-right: solid gray 1px;
+}
+
+.navBar > item2 {
+    flex: 1;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.navBar > item1:hover {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+}
+
+.navBar > item2:hover {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+}
+
+.pannelContainer > upload {
+    flex: 1;
+    padding: 0.5em;
+}
+
+.boundingBox {
+    padding: 0.25em;
+    border: solid gray 1px;
+    border-radius: 5px;
+}
+
+.pannelBody {
+    display: flex;
+    flex-direction: column;
+}
+
+.pannelBody > options {
+    flex: 1;
+    font-weight: bold;
+    padding: 0.5em;
+}
+
+.pannelBody > preview {
+    flex: 1;
+    padding: 0.5em 0.5em 0.5em 0;
+}
+
+.pannelBody > preview > img {
+    border: 1px solid black;
+}
+
+#asciiArea {
+    margin-top: 10%;
+    text-align: center;
+    font-size: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    visibility: hidden;
+}
+
+/* Only use these in a screen that is 640px in width or more */
+/* Desktop Layout */
+@media screen and (min-width: 640px) {
+    /* Koristi i dalje vrijednosti od iznad ali ih tu ili promjeni ili im doda */
+    body {
+        display: flex;
+        flex-direction: column;
+        
+        /*Center align column flexbox*/
+        align-items: center;
+        justify-content: center;
+        padding-top: 5vh;
+    }
+
+    .pannelContainer {
+        width: 100vw;
+        max-width: 600px;
+    }
+
+    .pannelContainer > header {
+        min-height: 4vh;
+        text-align: left;
+    }
+
+    .pannelContainer > upload {
+        text-align: left;
+    }
+
+    .navBar > item1 {
+        min-height: 4vh;
+        flex: 0 0 15%;
+    }
+
+    .navBar > item2 {
+        min-height: 4vh;
+        flex: 0 0 15%;
+        border-right: solid gray 1px;
+    }
+    
+    .pannelBody {
+        flex-direction: row;
+    }
+
+    .pannelBody > options {
+        min-height: 25vh;
+        text-align: left;
+        padding-left: 1em;
+        flex: 2;
+    }
+
+    .pannelBody > preview {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .pannelBody > preview > img {
+        width: 200px;
+        height: 200px;
+    }
+}
